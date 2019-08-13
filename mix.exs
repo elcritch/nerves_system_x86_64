@@ -1,7 +1,7 @@
 defmodule NervesSystemX8664.MixProject do
   use Mix.Project
 
-  @app :nerves_system_x86_64
+  @app :nerves_system_x86_64_gnu
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -35,7 +35,7 @@ defmodule NervesSystemX8664.MixProject do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "nerves-project/#{@app}"}
+        {:github_releases, "elcritch/#{@app}"}
       ],
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
@@ -50,7 +50,7 @@ defmodule NervesSystemX8664.MixProject do
     [
       {:nerves, "~> 1.5.4 or ~> 1.6.0", runtime: false},
       {:nerves_system_br, "1.11.0", runtime: false},
-      {:nerves_toolchain_x86_64_unknown_linux_musl, "~> 1.3.0", runtime: false},
+      {:nerves_toolchain_x86_64_unknown_linux_gnu, "~> 1.3.1", runtime: false},
       {:nerves_system_linter, "~> 0.3.0", runtime: false},
       {:ex_doc, "~> 0.18", only: [:dev, :test], runtime: false}
     ]
@@ -66,7 +66,7 @@ defmodule NervesSystemX8664.MixProject do
     [
       files: package_files(),
       licenses: ["Apache 2.0"],
-      links: %{"GitHub" => "https://github.com/nerves-project/#{@app}"}
+      links: %{"GitHub" => "https://github.com/elcritch/#{@app}"}
     ]
   end
 
