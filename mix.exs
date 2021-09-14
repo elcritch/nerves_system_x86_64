@@ -133,11 +133,11 @@ defmodule NervesSystemX8664.MixProject do
   defp build_runner() do
     case System.get_env("MIX_BUILD_RUNNER") do
       nil ->
-        Nerves.Artifact.BuildRunners.Docker,
+        Nerves.Artifact.BuildRunners.Docker
       "docker" ->
-        Nerves.Artifact.BuildRunners.Docker,
+        Nerves.Artifact.BuildRunners.Docker
       "local" ->
-        Nerves.Artifact.BuildRunners.Local,
+        Nerves.Artifact.BuildRunners.Local
     end
   end
 
