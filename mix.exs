@@ -44,6 +44,7 @@ defmodule NervesSystemX8664.MixProject do
       artifact_sites: [
         {:github_releases, "#{@github_organization}/#{@app}"}
       ],
+      build_runner: build_runner(),
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
       platform_config: [
@@ -125,6 +126,18 @@ defmodule NervesSystemX8664.MixProject do
     case System.get_env("BR2_PRIMARY_SITE") do
       nil -> []
       primary_site -> ["BR2_PRIMARY_SITE=#{primary_site}"]
+    end
+  end
+
+
+  defp build_runner() do
+    case System.get_env("MIX_BUILD_RUNNER") do
+      nil ->
+        Nerves.Artifact.BuildRunners.Docker,
+      "docker" ->
+        Nerves.Artifact.BuildRunners.Docker,
+      "local" ->
+        Nerves.Artifact.BuildRunners.Local,
     end
   end
 
